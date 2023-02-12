@@ -1,12 +1,12 @@
-### TECHS
+### TECH REQUIREMENTS
 
-✅ React 18 
-✅ Typescript
-✅ Deck.GL
-✅ Mapbox
-✅ Turf.Js
-✅ Mui 5
-✅ Jest
+- React 18 ✅
+- Typescript ✅
+- Deck.GL ✅
+- Mapbox ✅
+- Turf.Js ✅
+- Mui 5 ✅
+- Jest ✅
 
 ### DEPLOYMENT
 
