@@ -34,9 +34,6 @@ URL: [https://map.muum.dev](https://map.muum.dev)
 - Atomic design system for component development
 - Jest for unit testing
 - ESLint recommended rules
-- Precommit hooks for linting and code formatting validation
-- Prevent commit if linting not passed
-- CI/CD pipeline with Github Actions for running tests
 - Seperate logic and view with the help of React Hooks
 
 ### GETTING STARTED (FOR THE ONES WHO CLONE THE PROJECT)
