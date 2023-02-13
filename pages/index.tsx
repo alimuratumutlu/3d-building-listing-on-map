@@ -1,7 +1,7 @@
 import styles from "styles/Home.module.css";
 
 // Components
-import { Map, MetaTags } from "components";
+import { Customizer, Information, Map, MetaTags } from "components";
 
 // Hooks
 import useGeojson from "hooks/useGeojson";
@@ -18,7 +18,9 @@ export default function Home() {
     <>
       <MetaTags tags={Meta} />
       <main className={styles.main}>
+        <Customizer />
         <Map layers={layers} />
+        <Information />
       </main>
     </>
   );
