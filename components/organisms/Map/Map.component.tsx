@@ -13,9 +13,6 @@ import DeckGL, { FlyToInterpolator } from "deck.gl";
 import { GeoJsonLayer } from "@deck.gl/layers";
 import { Map as MapUi } from "react-map-gl";
 
-// Constants
-import { INITIAL_VIEW_STATE } from "constants/View";
-
 interface initialViewStateProps {
   latitude: number;
   longitude: number;
