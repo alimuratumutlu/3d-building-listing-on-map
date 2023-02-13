@@ -37,3 +37,5 @@ export const Map = ({ layers, initialViewState, mapStyle }: BaseMapProps) => {
     </DeckGL>
   );
 };
+
+export default Map;
