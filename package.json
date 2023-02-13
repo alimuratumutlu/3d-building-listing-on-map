@@ -18,6 +18,7 @@
 		"@deck.gl/layers": "^8.8.24",
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
+		"@loaders.gl/json": "^3.2.13",
 		"@mui/material": "^5.11.8",
 		"@next/font": "13.1.6",
 		"@testing-library/react": "^13.4.0",

@@ -10,6 +10,7 @@ export default function useGeojson() {
     reader.onload = () => {
       if (typeof reader.result === "string") {
         const data = JSON.parse(reader.result as string);
+        console.log(data.coordinates, "GEOJSON DATA");
         setGeojson(data);
       }
     };

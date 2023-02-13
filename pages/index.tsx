@@ -9,12 +9,20 @@ const Meta = [
 ];
 
 export default function Home() {
+  const initialViewState = {
+    maxZoom: 16,
+    pitch: 0,
+    bearing: 0,
+    longitude: -74,
+    latitude: 40.7,
+  };
+
   return (
     <>
       <MetaTags tags={Meta} />
       <main className={styles.main}>
         <Customizer />
-        <Map />
+        <Map initialViewState={initialViewState} />
         <Information />
       </main>
     </>
