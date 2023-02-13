@@ -7,8 +7,8 @@ import BuildingReducer from "./BuildingReducer";
 const initialState = {
   geojson: { type: "", coordinates: [] },
   floorArea: 0,
-  floorHeight: 0,
-  numberOfFloors: 0,
+  floorHeight: 4,
+  numberOfFloors: 45,
 };
 
 export default function BuildingProvider({

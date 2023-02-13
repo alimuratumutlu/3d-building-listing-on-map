@@ -29,7 +29,7 @@ export default function useCustomizer() {
       onChange: handleFloorHeightChange,
     },
     {
-      label: "Number of Floors",
+      label: "Floor Count",
       value: state.numberOfFloors,
       onChange: handleNumberOfFloorsChange,
     },

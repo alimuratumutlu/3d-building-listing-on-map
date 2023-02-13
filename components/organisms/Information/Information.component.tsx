@@ -29,12 +29,6 @@ export default function Information() {
       <Typography>
         {TOTAL_HEIGHT_LABEL}: {state.numberOfFloors * state.floorHeight}
       </Typography>
-      {state?.geojson && (
-        <div>
-          <Typography>Geojson:</Typography>
-          <pre>{JSON.stringify(state.geojson, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 }

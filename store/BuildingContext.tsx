@@ -6,7 +6,7 @@ const BuildingContext = createContext<BuildingContextType>({
     geojson: { type: "", coordinates: [] },
     floorArea: 0,
     floorHeight: 0,
-    numberOfFloors: 5,
+    numberOfFloors: 0,
   },
   setGeoJson: () => {},
   setFloorArea: () => {},
