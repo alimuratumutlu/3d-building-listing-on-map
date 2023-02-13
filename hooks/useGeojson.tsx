@@ -4,6 +4,8 @@ import { GeoJsonLayer } from "@deck.gl/layers";
 export default function useGeojson() {
   const [geojson, setGeojson] = useState("");
 
+  // TODO: getElevation will get the height of the building from the custom hook
+
   const layers = useMemo(() => {
     return [
       new GeoJsonLayer({

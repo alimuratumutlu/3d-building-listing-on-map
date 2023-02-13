@@ -1,7 +1,10 @@
 import styles from "styles/Home.module.css";
 
 // Components
-import { MetaTags } from "components";
+import { Map, MetaTags } from "components";
+
+// Hooks
+import useGeojson from "hooks/useGeojson";
 
 const Meta = [
   { name: "title", content: "Title of the website" },
@@ -9,10 +12,14 @@ const Meta = [
 ];
 
 export default function Home() {
+  const { layers } = useGeojson();
+
   return (
     <>
       <MetaTags tags={Meta} />
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <Map layers={layers} />
+      </main>
     </>
   );
 }
