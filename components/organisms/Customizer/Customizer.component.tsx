@@ -17,6 +17,11 @@ export default function Customizer() {
   return (
     <div className={styles.container}>
       <FileUploader />
+      <Typography className={styles.description}>
+        You can import sample geojson file from <i>geojsonExamples</i> folder.
+        After upload, you will be able to fly to the building area and customize
+        it.
+      </Typography>
       <Typography>{BUILDING_CUSTOMIZER_LABEL}</Typography>
       {options.map((option) => {
         return (

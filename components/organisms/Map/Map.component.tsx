@@ -59,7 +59,7 @@ export const Map = () => {
   const BuildingLayer = useMemo(() => {
     return [
       new GeoJsonLayer({
-        id: "filer",
+        id: "building",
         data: {
           type: "Feature",
           properties: {},
@@ -69,13 +69,14 @@ export const Map = () => {
         stroked: true,
         extruded: true,
         getLineWidth: 5,
-        lineWidthUnits: "pixels",
-        getElevation: state.floorHeight * state.numberOfFloors,
+        lineWidthUnits: "meters",
+        getElevation: state.floorHeight,
         autoHighlight: true,
         highlightColor: [100, 111, 255, 220],
         getFillColor: [160, 160, 180, 200],
         getLineColor: [125, 125, 125],
         getPointRadius: 100,
+        elevationScale: state.numberOfFloors,
       }),
     ];
   }, [state.geojson, state.floorHeight, state.numberOfFloors]);

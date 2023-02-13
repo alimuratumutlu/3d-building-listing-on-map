@@ -19,15 +19,17 @@ interface Props {
     | "overline"
     | "inherit";
   gutterBottom?: boolean;
+  restProps?: any;
 }
 
 const Typography: React.FC<Props> = ({
   children,
   variant = "body1",
   gutterBottom = false,
+  ...restProps
 }) => {
   return (
-    <MuiTypography variant={variant} gutterBottom={gutterBottom}>
+    <MuiTypography variant={variant} gutterBottom={gutterBottom} {...restProps}>
       {children}
     </MuiTypography>
   );
