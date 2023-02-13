@@ -33,6 +33,7 @@
 		"next": "13.1.6",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"react-map-gl": "^7.0.21",
 		"turf": "^3.0.14",
 		"typescript": "4.9.5"
 	},
