@@ -33,6 +33,9 @@ export const Map = ({ initialViewState }: BaseMapProps) => {
         getElevation: state.floorHeight * state.numberOfFloors,
         autoHighlight: true,
         highlightColor: [100, 111, 255, 220],
+        getFillColor: [160, 160, 180, 200],
+        getLineColor: [125, 125, 125],
+        getPointRadius: 100,
       }),
     ];
   }, [state.geojson, state.floorHeight, state.numberOfFloors]);
