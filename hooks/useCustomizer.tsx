@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
+import BuildingContext from "store/BuildingContext";
 
 export default function useCustomizer() {
-  const [floorArea, setFloorArea] = useState(0);
-  const [floorHeight, setFloorHeight] = useState(0);
-  const [numberOfFloors, setNumberOfFloors] = useState(0);
+  const { state, setFloorArea, setFloorHeight, setNumberOfFloors } =
+    useContext(BuildingContext);
 
   const handleFloorAreaChange = (newValue: number | number[]) => {
     setFloorArea(newValue as number);
@@ -20,26 +20,23 @@ export default function useCustomizer() {
   const options = [
     {
       label: "Floor Area",
-      value: floorArea,
+      value: state.floorArea,
       onChange: handleFloorAreaChange,
     },
     {
       label: "Floor Height",
-      value: floorHeight,
+      value: state.floorHeight,
       onChange: handleFloorHeightChange,
     },
     {
       label: "Number of Floors",
-      value: numberOfFloors,
+      value: state.numberOfFloors,
       onChange: handleNumberOfFloorsChange,
     },
   ];
 
   return {
     options,
-    floorArea,
-    floorHeight,
-    numberOfFloors,
     handleFloorAreaChange,
     handleFloorHeightChange,
     handleNumberOfFloorsChange,

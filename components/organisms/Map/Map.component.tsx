@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import BuildingContext from "store/BuildingContext";
 
 // Components
 import DeckGL from "@deck.gl/react";
@@ -17,47 +18,24 @@ interface BaseMapProps {
 }
 
 export const Map = ({ initialViewState }: BaseMapProps) => {
-  const { floorHeight } = useCustomizer();
-  const { geojson } = useGeojson();
-
-  const [pageViewState, setPageViewState] = useState(initialViewState);
-
-  const [viewport, setViewport] = useState({
-    width: "100%",
-    height: 650,
-    latitude: 46.5197,
-    longitude: 6.6323,
-    zoom: 12,
-    pitch: 10,
-    bearing: 60,
-  });
-
-  const jsonLayer = new GeoJsonLayer({
-    id: "building",
-    data: {
-      type: "Feature",
-      properties: {},
-      geometry: geojson,
-    },
-    filled: true,
-    stroked: true,
-    extruded: true,
-    getLineColor: [0, 0, 0, 255],
-    getFillColor: [120, 120, 120, 0],
-    getElevation: floorHeight,
-    getLineWidth: 5,
-    autoHighlight: true,
-    highlightColor: [253, 111, 255, 220],
-  });
+  const { state } = useContext(BuildingContext);
 
   const layers = [
     new GeoJsonLayer({
       id: "filer",
-      data: BUILDING_POLYGON,
+      data: {
+        type: "Feature",
+        properties: {},
+        geometry: state.geojson,
+      },
       filled: true,
       stroked: true,
+      extruded: true,
       getLineWidth: 5,
       lineWidthUnits: "pixels",
+      getElevation: state.floorHeight + 5,
+      autoHighlight: true,
+      highlightColor: [253, 111, 255, 220],
     }),
   ];
 
@@ -72,8 +50,8 @@ export const Map = ({ initialViewState }: BaseMapProps) => {
       layers={layers}
     >
       <MapUi
-        style={{ height: "100vh" }}
         ref={mapRef}
+        style={{ height: "100vh" }}
         mapStyle="mapbox://styles/rafilos556/ckhrp0auk0ol119s02qvctvh4"
         mapboxAccessToken="pk.eyJ1IjoicmFmaWxvczU1NiIsImEiOiJja2hoaHFwZjcwZ3pyMnFwNmY3aHY2eDg4In0.Ai4rUxBMjwoNzHTIDqmuBA"
       />

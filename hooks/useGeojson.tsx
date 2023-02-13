@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import BuildingContext from "store/BuildingContext";
 
 export default function useGeojson() {
-  const [geojson, setGeojson] = useState([]);
+  const { setGeoJson } = useContext(BuildingContext);
 
   const uploadFile = (event: any) => {
     const file = event.target.files[0];
@@ -11,12 +12,12 @@ export default function useGeojson() {
       if (typeof reader.result === "string") {
         const data = JSON.parse(reader.result as string);
         console.log(data.coordinates, "GEOJSON DATA");
-        setGeojson(data);
+        setGeoJson(data);
       }
     };
 
     reader.readAsText(file);
   };
 
-  return { geojson, uploadFile };
+  return { uploadFile };
 }

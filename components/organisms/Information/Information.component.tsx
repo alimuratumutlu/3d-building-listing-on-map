@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import BuildingContext from "store/BuildingContext";
+
 import styles from "styles/Information.module.css";
 
 // Components
@@ -6,19 +8,14 @@ import { Typography } from "components";
 
 // Hooks
 import useCustomizer from "hooks/useCustomizer";
-import useGeojson from "hooks/useGeojson";
 
 // Constants
 import { TOTAL_HEIGHT_LABEL } from "constants/Titles";
 
 export default function Information() {
-  const { options, numberOfFloors, floorHeight } = useCustomizer();
-  const { geojson } = useGeojson();
+  const { state } = useContext(BuildingContext);
 
-  useEffect(() => {
-    console.log("geojson", geojson);
-    console.log("TRIGGERED BY GEOJSON");
-  }, [geojson]);
+  const { options } = useCustomizer();
 
   return (
     <div className={styles.container}>
@@ -30,12 +27,12 @@ export default function Information() {
         );
       })}
       <Typography>
-        {TOTAL_HEIGHT_LABEL}: {numberOfFloors * floorHeight}
+        {TOTAL_HEIGHT_LABEL}: {state.numberOfFloors * state.floorHeight}
       </Typography>
-      {geojson && (
+      {state?.geojson && (
         <div>
           <Typography>Geojson:</Typography>
-          <pre>{JSON.stringify(geojson, null, 2)}</pre>
+          <pre>{JSON.stringify(state.geojson, null, 2)}</pre>
         </div>
       )}
     </div>
