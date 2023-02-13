@@ -53,29 +53,52 @@ export const Map = () => {
     goToNewCoordinate();
   }, [goToNewCoordinate]);
 
+  const LandingLayer = useMemo(() => {
+    let layer = new GeoJsonLayer({
+      id: "building",
+      data: {
+        type: "Feature",
+        properties: {},
+        geometry: state.geojson,
+      },
+      filled: true,
+      stroked: true,
+      extruded: false,
+      getLineWidth: 5,
+      lineWidthUnits: "meters",
+      autoHighlight: true,
+      highlightColor: [100, 111, 255, 220],
+      getFillColor: [133, 133, 133, 200],
+      getLineColor: [111, 111, 111],
+      getPointRadius: 100,
+    });
+
+    return layer;
+  }, [state.geojson]);
+
   const BuildingLayer = useMemo(() => {
-    return [
-      new GeoJsonLayer({
-        id: "building",
-        data: {
-          type: "Feature",
-          properties: {},
-          geometry: state.geojson,
-        },
-        filled: true,
-        stroked: true,
-        extruded: true,
-        getLineWidth: 5,
-        lineWidthUnits: "meters",
-        getElevation: state.floorHeight,
-        autoHighlight: true,
-        highlightColor: [100, 111, 255, 220],
-        getFillColor: [160, 160, 180, 200],
-        getLineColor: [125, 125, 125],
-        getPointRadius: 100,
-        elevationScale: state.numberOfFloors,
-      }),
-    ];
+    let layer = new GeoJsonLayer({
+      id: "building",
+      data: {
+        type: "Feature",
+        properties: {},
+        geometry: state.geojson,
+      },
+      filled: true,
+      stroked: true,
+      extruded: true,
+      getLineWidth: 5,
+      lineWidthUnits: "meters",
+      getElevation: state.floorHeight,
+      autoHighlight: true,
+      highlightColor: [100, 111, 255],
+      getFillColor: [160, 160, 180, 200],
+      getLineColor: [125, 125, 125],
+      getPointRadius: 100,
+      elevationScale: state.numberOfFloors,
+    });
+
+    return layer;
   }, [state.geojson, state.floorHeight, state.numberOfFloors]);
 
   const mapRef = useRef(null);
@@ -86,7 +109,7 @@ export const Map = () => {
       ref={deckRef}
       controller={true}
       initialViewState={initialViewState}
-      layers={BuildingLayer}
+      layers={[LandingLayer, BuildingLayer]}
     >
       <MapUi
         ref={mapRef}
