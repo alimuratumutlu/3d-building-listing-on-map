@@ -7,14 +7,18 @@ import { Button, Input, Typography } from "components";
 // Hooks
 import useGeojson from "hooks/useGeojson";
 
-export default function FileUploader() {
+interface FileUploaderProps {
+  label: string;
+}
+
+export default function FileUploader({ label }: FileUploaderProps) {
   const { uploadFile } = useGeojson();
 
   return (
     <div className={styles.container}>
       <Typography variant="h6">File Uploader</Typography>
       <Input type="file" onChange={uploadFile} />
-      <Button label="Upload GeoJSON" />
+      <Button label={label} />
     </div>
   );
 }
