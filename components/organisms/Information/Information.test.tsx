@@ -2,7 +2,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import Information from "./Information.component";
-import { TOTAL_HEIGHT_LABEL } from "@constants/Titles";
+import { TOTAL_HEIGHT_LABEL } from "constants/Titles";
 
 describe("Information component", () => {
   it("renders the information", () => {

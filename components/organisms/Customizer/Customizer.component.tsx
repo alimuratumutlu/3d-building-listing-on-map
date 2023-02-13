@@ -9,7 +9,7 @@ import { SliderOption } from "components";
 import useCustomizer from "hooks/useCustomizer";
 
 // Constants
-import { BUILDING_CUSTOMIZER_LABEL, LOAD_GEOJSON } from "@constants/Titles";
+import { BUILDING_CUSTOMIZER_LABEL, LOAD_GEOJSON } from "constants/Titles";
 
 export default function Customizer() {
   const { options } = useCustomizer();

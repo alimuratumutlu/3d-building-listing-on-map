@@ -1,16 +1,17 @@
 import styles from "styles/Home.module.css";
 
 // Components
-import { MetaTags } from "@/components";
+import { MetaTags } from "components";
+
+const Meta = [
+  { name: "title", content: "Title of the website" },
+  { name: "description", content: "Description of the website" },
+];
 
 export default function Home() {
   return (
     <>
-      <MetaTags
-        title="Muum Dev Maps"
-        description="Built with MapBox, DeckGL, and React"
-      />
-
+      <MetaTags tags={Meta} />
       <main className={styles.main}></main>
     </>
   );

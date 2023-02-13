@@ -8,7 +8,7 @@ import { Typography } from "components";
 import useCustomizer from "hooks/useCustomizer";
 
 // Constants
-import { TOTAL_HEIGHT_LABEL } from "@constants/Titles";
+import { TOTAL_HEIGHT_LABEL } from "constants/Titles";
 
 export default function Information() {
   const { options, numberOfFloors, floorHeight } = useCustomizer();

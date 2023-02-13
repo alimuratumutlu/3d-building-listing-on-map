@@ -8,7 +8,7 @@ import { Button, Input, Typography } from "components";
 import useGeojson from "hooks/useGeojson";
 
 // Constants
-import { UPLOAD_FILE_LABEL } from "@constants/Titles";
+import { UPLOAD_FILE_LABEL } from "constants/Titles";
 
 interface FileUploaderProps {
   label: string;
