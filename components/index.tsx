@@ -6,6 +6,7 @@ import Typography from "./atoms/Typography/Typography.component";
 
 // molecules
 import FileUploader from "./molecules/FileUploader/FileUploader.component";
+import MetaTags from "./molecules/MetaTags/MetaTags.component";
 import SliderOption from "./molecules/SliderOption/SliderOption.component";
 
 // organisms
@@ -19,6 +20,7 @@ export {
   Slider,
   Typography,
   FileUploader,
+  MetaTags,
   SliderOption,
   Customizer,
   Information,

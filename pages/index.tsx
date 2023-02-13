@@ -1,18 +1,16 @@
-import Head from "next/head";
 import styles from "styles/Home.module.css";
+
+// Components
+import { MetaTags } from "@/components";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Muum Dev Maps</title>
-        <meta
-          name="description"
-          content="Built with MapBox, DeckGL, and React"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaTags
+        title="Muum Dev Maps"
+        description="Built with MapBox, DeckGL, and React"
+      />
+
       <main className={styles.main}></main>
     </>
   );
