@@ -8,40 +8,25 @@ import { SliderOption } from "components";
 // Hooks
 import useCustomizer from "hooks/useCustomizer";
 
+// Constants
+import { BUILDING_CUSTOMIZER_LABEL } from "@constants/Titles";
+
 export default function Customizer() {
-  const {
-    floorArea,
-    floorHeight,
-    numberOfFloors,
-    handleFloorAreaChange,
-    handleFloorHeightChange,
-    handleNumberOfFloorsChange,
-  } = useCustomizer();
+  const { options } = useCustomizer();
 
   return (
     <div className={styles.container}>
-      <Typography>Building Customizer</Typography>
-      <SliderOption
-        label="Opacity"
-        value={floorArea}
-        onChange={() => {
-          handleFloorAreaChange;
-        }}
-      />
-      <SliderOption
-        label="Opacity"
-        value={floorHeight}
-        onChange={() => {
-          handleFloorHeightChange;
-        }}
-      />
-      <SliderOption
-        label="Opacity"
-        value={numberOfFloors}
-        onChange={() => {
-          handleNumberOfFloorsChange;
-        }}
-      />
+      <Typography>{BUILDING_CUSTOMIZER_LABEL}</Typography>
+      {options.map((option) => {
+        return (
+          <SliderOption
+            key={option.label}
+            label={option.label}
+            value={option.value}
+            onChange={option.onChange}
+          />
+        );
+      })}
     </div>
   );
 }

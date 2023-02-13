@@ -17,7 +17,26 @@ export default function useCustomizer() {
     setNumberOfFloors(newValue as number);
   };
 
+  const options = [
+    {
+      label: "Floor Area",
+      value: floorArea,
+      onChange: handleFloorAreaChange,
+    },
+    {
+      label: "Floor Height",
+      value: floorHeight,
+      onChange: handleFloorHeightChange,
+    },
+    {
+      label: "Number of Floors",
+      value: numberOfFloors,
+      onChange: handleNumberOfFloorsChange,
+    },
+  ];
+
   return {
+    options,
     floorArea,
     floorHeight,
     numberOfFloors,

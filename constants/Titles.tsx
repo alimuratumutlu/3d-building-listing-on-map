@@ -1,0 +1,4 @@
+const BUILDING_CUSTOMIZER_LABEL = "Customize Building";
+const UPLOAD_FILE_LABEL = "Upload File";
+
+export { BUILDING_CUSTOMIZER_LABEL, UPLOAD_FILE_LABEL };
