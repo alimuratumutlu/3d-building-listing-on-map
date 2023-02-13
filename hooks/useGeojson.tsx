@@ -1,10 +1,15 @@
 import { useMemo, useState } from "react";
+
+// Components
 import { GeoJsonLayer } from "@deck.gl/layers";
 
-export default function useGeojson() {
-  const [geojson, setGeojson] = useState("");
+// Hooks
+import useCustomizer from "hooks/useCustomizer";
 
-  // TODO: getElevation will get the height of the building from the custom hook
+export default function useGeojson() {
+  const { floorHeight } = useCustomizer();
+
+  const [geojson, setGeojson] = useState("");
 
   const layers = useMemo(() => {
     return [
@@ -19,10 +24,10 @@ export default function useGeojson() {
         getLineColor: [0, 0, 0],
         getRadius: 100,
         getLineWidth: 1,
-        getElevation: 30,
+        getElevation: floorHeight,
       }),
     ];
-  }, [geojson]);
+  }, [floorHeight, geojson]);
 
   const uploadFile = (event: any) => {
     const file = event.target.files[0];
