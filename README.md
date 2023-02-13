@@ -22,14 +22,14 @@ URL: [https://map.muum.dev](https://map.muum.dev)
 ## 1] Architecture (What & Where)
 - The project will need 1 page: Map ✅
 - Upload (in the form of geojson) a plots ✅
-- Draw a building in the center of the plot
+- Draw a building in the center of the plot ✅
 - Customize the properties of the building (floor area, number of floors and height per floor) with a Slider ✅
-- Display the statistics of the building
+- Display the statistics of the building ✅
 - Deploy to Vercel ✅
 
 ## 2] Design Pattern (What & How)
-- MapBox for map system
-- Deck.gl for 3D building layer
+- MapBox for map system ✅
+- Deck.gl for 3D building layer ✅
 - MUI for UI elements ✅
 - Atomic design system for component development ✅
 - Jest for unit testing ✅
