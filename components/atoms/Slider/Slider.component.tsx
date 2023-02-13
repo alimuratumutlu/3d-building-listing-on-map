@@ -3,7 +3,7 @@ import { Slider as MuiSlider } from "@mui/material";
 
 interface Props {
   value: number;
-  onChange: (value: number) => void;
+  onChange: (event: any, newValue: number) => void;
   min?: number;
   max?: number;
   step?: number;
@@ -20,7 +20,7 @@ const Slider: React.FC<Props> = ({
 
   const handleChange = (event: any, newValue: number | number[]) => {
     setSliderValue(newValue as number);
-    onChange(newValue as number);
+    onChange(event, newValue as number);
   };
 
   return (
