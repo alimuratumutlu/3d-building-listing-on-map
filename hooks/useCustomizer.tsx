@@ -5,15 +5,18 @@ export default function useCustomizer() {
   const { state, setFloorArea, setFloorHeight, setNumberOfFloors } =
     useContext(BuildingContext);
 
-  const handleFloorAreaChange = (newValue: number | number[]) => {
+  const handleFloorAreaChange = (event: any, newValue: number | number[]) => {
     setFloorArea(newValue as number);
   };
 
-  const handleFloorHeightChange = (newValue: number | number[]) => {
+  const handleFloorHeightChange = (event: any, newValue: number | number[]) => {
     setFloorHeight(newValue as number);
   };
 
-  const handleNumberOfFloorsChange = (newValue: number | number[]) => {
+  const handleNumberOfFloorsChange = (
+    event: any,
+    newValue: number | number[]
+  ) => {
     setNumberOfFloors(newValue as number);
   };
 

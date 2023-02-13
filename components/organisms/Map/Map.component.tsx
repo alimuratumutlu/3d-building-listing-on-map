@@ -1,20 +1,60 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useContext,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import BuildingContext from "store/BuildingContext";
 
 // Components
-import DeckGL from "@deck.gl/react";
+import DeckGL, { FlyToInterpolator } from "deck.gl";
 import { GeoJsonLayer } from "@deck.gl/layers";
 import { Map as MapUi } from "react-map-gl";
 
 // Constants
 import { INITIAL_VIEW_STATE } from "constants/View";
 
-interface BaseMapProps {
-  initialViewState?: Record<string, unknown>;
+interface initialViewStateProps {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+  pitch: number;
+  transitionDuration: number;
+  opacity?: number;
+  transitionInterpolator?: FlyToInterpolator;
 }
 
-export const Map = ({ initialViewState }: BaseMapProps) => {
+export const Map = () => {
   const { state } = useContext(BuildingContext);
+
+  const [initialViewState, setInitialViewState] =
+    useState<initialViewStateProps>({
+      longitude: 6.6111029,
+      latitude: 46.5141469,
+      zoom: 17,
+      pitch: 10,
+      transitionDuration: 8000,
+      opacity: 0.5,
+    });
+
+  const goToNewCoordinate = useCallback(() => {
+    if (state.geojson?.coordinates[0] !== undefined) {
+      setInitialViewState({
+        longitude: state.geojson.coordinates[0][0][0][0],
+        latitude: state.geojson.coordinates[0][0][0][1],
+        zoom: 16,
+        pitch: 10,
+        transitionDuration: 5000,
+        transitionInterpolator: new FlyToInterpolator(),
+      });
+    }
+  }, [state.geojson]);
+
+  useEffect(() => {
+    goToNewCoordinate();
+  }, [goToNewCoordinate]);
 
   const BuildingLayer = useMemo(() => {
     return [
@@ -47,7 +87,7 @@ export const Map = ({ initialViewState }: BaseMapProps) => {
     <DeckGL
       ref={deckRef}
       controller={true}
-      initialViewState={INITIAL_VIEW_STATE}
+      initialViewState={initialViewState}
       layers={BuildingLayer}
     >
       <MapUi

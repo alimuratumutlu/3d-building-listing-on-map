@@ -24,7 +24,7 @@ export default function Customizer() {
             key={option.label}
             label={option.label}
             value={option.value}
-            onChange={option.onChange}
+            onChange={(e, v) => option.onChange(e, v)}
           />
         );
       })}
