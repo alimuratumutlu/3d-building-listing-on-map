@@ -6,19 +6,19 @@ import { Typography } from "components";
 import { Slider } from "components";
 
 interface SliderOptionProps {
-  title: string;
+  label: string;
   value: number;
   onChange: (event: any, newValue: number) => void;
 }
 
 export default function SliderOption({
-  title,
+  label,
   value,
   onChange,
 }: SliderOptionProps) {
   return (
     <div className={styles.container}>
-      <Typography gutterBottom>{title}</Typography>
+      <Typography gutterBottom>{label}</Typography>
       <Slider
         value={value}
         onChange={(event: any, newValue: number) => onChange(event, newValue)}
