@@ -22,12 +22,14 @@ export default function Information() {
       {options.map((option) => {
         return (
           <Typography key={option.label}>
-            {option.label}: {option.value}
+            {option.label}:{" "}
+            {option.calculatedValue ? option.calculatedValue : option.value}{" "}
+            {option.unit}
           </Typography>
         );
       })}
       <Typography>
-        {TOTAL_HEIGHT_LABEL}: {state.numberOfFloors * state.floorHeight}
+        {TOTAL_HEIGHT_LABEL}: {state.numberOfFloors * state.floorHeight} m
       </Typography>
     </div>
   );

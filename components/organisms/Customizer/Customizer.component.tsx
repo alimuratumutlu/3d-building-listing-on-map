@@ -17,7 +17,7 @@ export default function Customizer() {
   return (
     <div className={styles.container}>
       <FileUploader />
-      <Typography className={styles.description}>
+      <Typography>
         You can import sample geojson file from <i>geojsonExamples</i> folder.
         After upload, you will be able to fly to the building area and customize
         it.
@@ -30,6 +30,8 @@ export default function Customizer() {
             label={option.label}
             value={option.value}
             onChange={(e, v) => option.onChange(e, v)}
+            max={option.max}
+            step={option.step}
           />
         );
       })}

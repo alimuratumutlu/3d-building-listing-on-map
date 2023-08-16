@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   useContext,
   useCallback,
@@ -24,7 +25,8 @@ interface initialViewStateProps {
 }
 
 export const Map = () => {
-  const { state } = useContext(BuildingContext);
+  const { state, setBuildingPolygon, setLandingPolygon } =
+    useContext(BuildingContext);
 
   const [initialViewState, setInitialViewState] =
     useState<initialViewStateProps>({
@@ -37,17 +39,17 @@ export const Map = () => {
     });
 
   const goToNewCoordinate = useCallback(() => {
-    if (state.geojson?.coordinates[0] !== undefined) {
+    if (state.landingPolygon?.coordinates[0] !== undefined) {
       setInitialViewState({
-        longitude: state.geojson.coordinates[0][0][0][0],
-        latitude: state.geojson.coordinates[0][0][0][1],
+        longitude: state.landingPolygon.coordinates[0][0][0][0],
+        latitude: state.landingPolygon.coordinates[0][0][0][1],
         zoom: 16,
         pitch: 10,
         transitionDuration: 5000,
         transitionInterpolator: new FlyToInterpolator(),
       });
     }
-  }, [state.geojson]);
+  }, [state.landingPolygon]);
 
   useEffect(() => {
     goToNewCoordinate();
@@ -59,7 +61,7 @@ export const Map = () => {
       data: {
         type: "Feature",
         properties: {},
-        geometry: state.geojson,
+        geometry: state.landingPolygon,
       },
       filled: true,
       stroked: true,
@@ -74,7 +76,7 @@ export const Map = () => {
     });
 
     return layer;
-  }, [state.geojson]);
+  }, [state.landingPolygon]);
 
   const BuildingLayer = useMemo(() => {
     let layer = new GeoJsonLayer({
@@ -82,7 +84,7 @@ export const Map = () => {
       data: {
         type: "Feature",
         properties: {},
-        geometry: state.geojson,
+        geometry: state.buildingPolygon,
       },
       filled: true,
       stroked: true,
@@ -99,7 +101,7 @@ export const Map = () => {
     });
 
     return layer;
-  }, [state.geojson, state.floorHeight, state.numberOfFloors]);
+  }, [state.buildingPolygon, state.floorHeight, state.numberOfFloors]);
 
   const mapRef = useRef(null);
   const deckRef = useRef(null);

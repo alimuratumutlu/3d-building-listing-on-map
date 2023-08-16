@@ -1,16 +1,17 @@
 import { useContext } from "react";
-import * as turf from "@turf/turf";
 
 import BuildingContext from "store/BuildingContext";
 
-export default function useGeojson() {
-  const { setGeoJson, setFloorArea } = useContext(BuildingContext);
+import { calculatePolygonArea, resizePolygon } from "@/helpers/PolygonHelpers";
 
-  const updateArea = (coordinates: any) => {
-    let polygon = turf.polygon([[...coordinates[0][0]]]);
-    let area = turf.area(polygon);
-    setFloorArea(Math.ceil(area));
-  };
+export default function useGeojson() {
+  const {
+    state,
+    setBuildingPolygon,
+    setLandingPolygon,
+    setLandingArea,
+    setFloorArea,
+  } = useContext(BuildingContext);
 
   const uploadFile = (event: any) => {
     const file = event.target.files[0];
@@ -19,8 +20,26 @@ export default function useGeojson() {
     reader.onload = () => {
       if (typeof reader.result === "string") {
         const data = JSON.parse(reader.result as string);
-        setGeoJson(data);
-        updateArea(data.coordinates);
+
+        // Set the landing (area) polygon
+        setLandingPolygon(data);
+
+        // Calculate the landing area
+
+        if (state.landingPolygon.coordinates) {
+          calculatePolygonArea(
+            state.landingPolygon.coordinates,
+            setLandingArea
+          );
+        }
+
+        // Resize the building polygon to fit the half of the landing (area) polygon
+        resizePolygon(data, 0.5, setBuildingPolygon);
+
+        if (state.buildingPolygon.coordinates) {
+          // Calculate the building floor area
+          calculatePolygonArea(state.buildingPolygon.coordinates, setFloorArea);
+        }
       }
     };
 

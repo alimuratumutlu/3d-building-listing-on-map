@@ -2,7 +2,7 @@ import React from "react";
 import styles from "styles/FileUploader.module.css";
 
 // Components
-import { Button, Input, Typography } from "components";
+import { Input, Typography } from "components";
 
 // Hooks
 import useGeojson from "hooks/useGeojson";
